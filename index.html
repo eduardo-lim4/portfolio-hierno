@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome.</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>  
+    <div class="card">
+        <div class="social-links">
+            <a href="https://www.linkedin.com/in/eduardo-limma/" target="_blank" class="icon linkedin">
+                <i class="fab fa-linkedin-in"></i>
+            </a>
+            <a href="https://discord.com/users/855616203866243083" target="_blank" class="icon discord">
+                <i class="fab fa-discord"></i>
+            </a>
+            <a href="https://open.spotify.com/user/31434dajqm5kczme2aqqylmyet6q?si=4351daa96f3c4260" target="_blank" class="icon spotify">
+                <i class="fab fa-spotify"></i>
+            </a>
+        </div>
+        <img src="hierno.jpg" alt="Profile Picture" class="profile-pic">
+        <div class="username">
+            Hierno
+        </div>
+        <div class="bio">
+            Front-End Developer (Learning Back-end). JavaScript | Python | HTML | CSS | PHP | Computer Science Student.
+        </div>
+        <div class="tags">
+            <span class="tag">Programmer</span>
+            <span class="tag">Linux</span>
+            <span class="tag">Gamer</span>
+        </div>
+    </div>
+    <section class="projects">
+        <h2 id="projects-title">Meus projetos</h2>
+            <div class="project-list">
+              <div class="project">
+                <h3 id="project-title"><i class="fas fa-lock"></i> Demonstração de Criptografia PGP com Python</h3>
+                <p id="project-desc">Este projeto tem como função demonstrar como funciona a criptografia PGP na prática, simulando uma criptografia e uma Hash SHA-256. Para fins acadêmicos!</p>
+               <a href="https://github.com/eduardo-lim4/prototipo-pgp" target="_blank" id="project-link">Ver no GitHub</a>
+            </div>
+          </div>
+    </section>
+    <button id="lang-toggle">EN</button>
+    <script>
+        const langToggle = document.getElementById("lang-toggle");
+        let currentLang = "pt";
+
+        const translations = {
+            pt: {
+            "projects-title": "Meus projetos",
+            "project-title": "Demonstração de Criptografia PGP com Python",
+            "project-desc": "Este projeto tem como função demonstrar como funciona a criptografia PGP na prática, simulando uma criptografia e uma Hash SHA-256. Para fins acadêmicos!",
+            "project-link": "Ver no GitHub"
+            },
+            en: {
+            "projects-title": "My Projects",
+            "project-title": "PGP Encryption Demonstration with Python",
+            "project-desc": "This project demonstrates how PGP encryption works in practice, simulating encryption and a SHA-256 hash. For academic purposes!",
+            "project-link": "View on GitHub"
+            }
+        };
+
+        langToggle.addEventListener("click", () => {
+            currentLang = currentLang === "pt" ? "en" : "pt";
+            langToggle.textContent = currentLang === "pt" ? "EN" : "PT";
+
+            for (const id in translations[currentLang]) {
+            const element = document.getElementById(id);
+            if (element) {
+                element.textContent = translations[currentLang][id];
+            }
+            }
+        });
+    </script>
+</body>
+<footer>© 2025 Hierno.</footer>
+</html>
