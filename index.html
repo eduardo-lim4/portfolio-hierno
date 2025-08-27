@@ -63,6 +63,35 @@
             }
         };
 
+        const terminalTranslations = {
+            pt: {
+                welcome: "Bem-vindo/a/e ao modo terminal. Digite <code>help</code> para ver os comandos disponíveis.",
+                help: "Comandos disponíveis: whoami, projetos, clear, carros, musica, gratidao, amigos",
+                whoami: "Eu sou o Hierno - Front-End Developer, estudante de Ciência da Computação. Você? Deve ser uma pessoa legal.",
+                carros: "Gosto muito de carros no geral, tanto de dirigir quanto de modificar. O meu favorito é a BMW M3 Competition.",
+                musica: "Daft Punk, Mac DeMarco, Deftones, Alex G, Slipknot...Ouço um pouco de tudo.",
+                play: "Tocando agora: Daft Punk – Veridis Quo. Para pausar, digite 'pause veridis quo'. (Botões disponíveis no final da página)",
+                pause: "Música pausada. Para voltar, digite 'play veridis quo'. (Botões disponíveis no final da página)",
+                gratidao: "Sou muito grato por tudo, desde as pessoas que conheci, onde cheguei, até mesmo pelas coisas pequenas do dia. Viver é uma benção.",
+                amigos: "Meus amigos são tudo pra mim. Gosto muito de cada um. (Menções especiais: J, N, L)",
+                projetos: "- Criptografia PGP - Extração de Emails no Google Sheets usando Python (pesosal)",
+                notfound: cmd => `Comando não reconhecido: ${cmd}`
+                },
+            en: {
+                welcome: "Welcome to the Terminal mode. Type <code>help</code> to see available commands.",
+                help: "Available commands: whoami, projects, clear, cars, music, gratitude, friends",
+                whoami: "I'm Hierno – Front-End Developer and Computer Science student. You? Probably a cool person.",
+                carros: "I really enjoy cars — driving, modifying, admiring. My favorite one is the BMW M3 Competition.",
+                musica: "Daft Punk, Mac DeMarco, Deftones, Alex G, Slipknot... I listen to a bit of everything.",
+                play: "Now playing: Daft Punk – Veridis Quo. To pause, type 'pause veridis quo'. (Buttons available at the bottom of the page)",
+                pause: "Music paused. To resume, type 'play veridis quo'. (Buttons available at the bottom of the page)",
+                gratidao: "I'm deeply grateful for everything — the people I've met, the person I have become, and even the small things. Life is a blessing.",
+                amigos: "My friends mean the world to me. I truly appreciate each one. (Special mentions: J, N, L)",
+                projetos: "- PGP Encryption - Email Extraction in Google Sheets using Python (personal)",
+                notfound: cmd => `Unrecognized command: ${cmd}`
+                }
+        }
+
         langToggle.addEventListener("click", () => {
             currentLang = currentLang === "pt" ? "en" : "pt";
             langToggle.textContent = currentLang === "pt" ? "EN" : "PT";
@@ -73,7 +102,79 @@
                 element.textContent = translations[currentLang][id];
             }
             }
+        document.getElementById("terminal-output").innerHTML = `<p>${terminalTranslations[currentLang].welcome}</p>`;
         });
+    </script>
+
+    <h2 id="projects-title">Terminal</h2>
+    <section class="terminal">
+        <div id="terminal-output">
+            <p>Bem-vindo/a/e ao modo terminal. Digite <code>help</code> para ver os comandos disponíveis.</p>
+        </div>
+        <div class="terminal-input">
+            <span>&gt;</span>
+            <input type="text" id="terminal-command" autocomplete="off" />
+        </div>
+    </section>
+
+    <script>
+        const input = document.getElementById("terminal-command");
+        const output = document.getElementById("terminal-output");
+
+        input.addEventListener("keydown", function (e) {
+            if (e.key === "Enter") {
+            const command = input.value.trim();
+            input.value = "";
+            processCommand(command);
+            }
+        });
+
+        function processCommand(cmd) {
+    let response = "";
+    const t = terminalTranslations[currentLang];
+
+        switch (cmd.toLowerCase()) {
+            case "help":
+            response = t.help;
+            break;
+            case "whoami":
+            response = t.whoami;
+            break;
+            case "carros":
+            case "cars":
+            response = t.carros;
+            break;
+            case "musica":
+            case "music":
+            response = t.musica;
+            break;
+            case "gratidao":
+            case "gratitude":
+            response = t.gratidao;
+            break;
+            case "amigos":
+            case "friends":
+            response = t.amigos;
+            break;
+            case "projetos":
+            case "projects":
+            response = t.projetos;
+            break;
+            case "clear":
+            output.innerHTML = "";
+            return;
+            default:
+            response = t.notfound(cmd);
+  }
+
+  const line = document.createElement("p");
+  line.textContent = `> ${cmd}`;
+  output.appendChild(line);
+
+  const res = document.createElement("p");
+  res.innerHTML = response.replace(/\n/g, "<br>");
+  output.appendChild(res);
+}
     </script>
 </body>
 <footer>© 2025 Hierno.</footer>
