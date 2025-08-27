@@ -367,17 +367,3 @@ body.psicodelico {
   50% { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
 }
-
-#visit-counter {
-  position: fixed;
-  top: 15px;
-  left: 15px;
-  background-color: rgba(0, 0, 0, 0.6);
-  color: #00ff00;
-  font-family: 'Courier New', monospace;
-  padding: 6px 12px;
-  border-radius: 8px;
-  font-size: 14px;
-  z-index: 999;
-  box-shadow: 0 0 10px rgba(0,255,0,0.2);
-}
