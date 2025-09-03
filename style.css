@@ -1,7 +1,7 @@
 body { 
   margin: 0;
   padding: 0;
-  background-image: url(background.gif);
+  background-image: url(background.webp);
   background-size: cover;
   background-color: #0a1f3d; /* azul escuro */
   font-family: 'Segoe UI', sans-serif;
@@ -366,4 +366,8 @@ body.psicodelico {
   0% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
+}
+
+#projects-title {
+  animation: glow 2s infinite ease-in-out;
 }
